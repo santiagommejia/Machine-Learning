@@ -1,7 +1,6 @@
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score
-import matplotlib.pyplot as plt
 import pandas as pd
 
 # Notes V1:
@@ -26,6 +25,5 @@ model = linear_model.LinearRegression()
 model.fit(X_train, Y_train)
 Y_pred = model.predict(X_test)
 
-# ver mejores maneras de mostrar el squared error, graficar y ver como se puede tener menos error
 print('Mean squared error: %.2f' % mean_squared_error(Y_test, Y_pred))
 print('Coefficient of determination: %.2f' % r2_score(Y_test, Y_pred))

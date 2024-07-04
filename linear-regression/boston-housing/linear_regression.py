@@ -3,7 +3,6 @@ from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 BostonHousing = pd.read_csv('BostonHousing.csv')
 Y = BostonHousing.medv
@@ -17,7 +16,6 @@ Y_pred = model.predict(X_test)
 print('Mean squared error: %.2f' % mean_squared_error(Y_test, Y_pred))
 print('Coefficient of determination: %.2f' % r2_score(Y_test, Y_pred))
 
-print (X_train.shape, Y_train.shape)
 # Plotting the trained linear regression model
 plt.figure(figsize=(10, 6))
 

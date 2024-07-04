@@ -1,0 +1,3 @@
+The best result was achieved at linear_regression_v5.py 
+The Coefficient of determination was 0.74
+This solution used polinomial features and a random forest regressor.

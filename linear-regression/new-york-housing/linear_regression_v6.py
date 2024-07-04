@@ -1,12 +1,16 @@
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import PolynomialFeatures, StandardScaler, MinMaxScaler
+from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import mean_squared_error, r2_score
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+
+# Notes vChatGpt:
+# Setting a polinomial curve to the model
+# Mean squared error: 967666.72
+# Coefficient of determination: 0.54 
 
 # Load and preprocess data
 df = pd.read_csv('NYHouseDataset.csv')
@@ -29,7 +33,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('poly', PolynomialFeatures(degree=3)),
-    ('regressor', RandomForestRegressor(n_estimators=100, random_state=0))
+    ('regressor', LinearRegression())
 ])
 
 # Fit the model
@@ -43,9 +47,9 @@ print('Mean squared error: %.2f' % mean_squared_error(Y_test, Y_pred))
 print('Coefficient of determination: %.2f' % r2_score(Y_test, Y_pred))
 
 # Plot predictions vs actual values
-# plt.scatter(Y_test, Y_pred, alpha=0.5)
-# plt.plot([Y_test.min(), Y_test.max()], [Y_test.min(), Y_test.max()], 'r--', lw=2)
-# plt.xlabel("Actual Prices (in thousands)")
-# plt.ylabel("Predicted Prices (in thousands)")
-# plt.title("Actual vs Predicted Prices")
-# plt.show()
+plt.scatter(Y_test, Y_pred, alpha=0.5)
+plt.plot([Y_test.min(), Y_test.max()], [Y_test.min(), Y_test.max()], 'r--', lw=2)
+plt.xlabel("Actual Prices (in thousands)")
+plt.ylabel("Predicted Prices (in thousands)")
+plt.title("Actual vs Predicted Prices")
+plt.show()
